@@ -37,13 +37,16 @@ export const Login = ({ onLoggedIn }: ILogin) => {
 		nonce: string;
 	}) => {
 		try {
-			const signature = await web3?.eth.personal.sign(
-				`nonce: ${nonce}`,
-				publicAddress,
-				'' // MetaMask will ignore the password argument here
-			);
-
-			return { publicAddress, signature };
+			await window.ethereum.request({
+				method: 'eth_requestAccounts',
+			  });
+			let myEoa = await window.ethereum.request({method: 'eth_coinbase'});
+  			const transactionHash = await window.ethereum.request({
+    		method: 'personal_sign',
+    		params: [myEoa, `nonce: ${nonce}`
+    	],
+  		});
+			return { publicAddress, signature:transactionHash };
 		} catch (err) {
 			throw new Error(
 				'You need to sign the message to be able to log in.'
@@ -73,7 +76,7 @@ export const Login = ({ onLoggedIn }: ILogin) => {
 			}
 		}
 
-		const coinbase = await web3.eth.getCoinbase();
+		let coinbase = await window.ethereum.request({method: 'eth_coinbase'});
 		if (!coinbase) {
 			window.alert('Please activate MetaMask first.');
 			return;

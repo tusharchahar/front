@@ -58,7 +58,6 @@ export const Profile = ({ auth, onLoggedOut }: Props) => {
 			.then((user) => {
 				//console.log(user);
 				setState({ ...state, user,filled:user.filledData,id:user._id });
-				console.log('changed1',state);
 				})
 			.catch(window.alert);
 	}, []);
@@ -78,7 +77,6 @@ export const Profile = ({ auth, onLoggedOut }: Props) => {
     		college: college,
 			parent_id: state.id
   		};
-		console.log(data);
 
 
   		try {
@@ -91,7 +89,6 @@ export const Profile = ({ auth, onLoggedOut }: Props) => {
 			...prevState,
 			filled:true
 		  }));
-		console.log(state,'changed2');
   		} catch (error) {
 		console.log(error);
     	// Handle error
@@ -133,7 +130,6 @@ export const Profile = ({ auth, onLoggedOut }: Props) => {
 			  headers: { Authorization: `Bearer ${accessToken}`,'Content-Type': 'application/json' },
 			});
 			const data = await response.json();
-			console.log(data);
 			setState({ ...state, edit:true });
 			setHobby(data[0].hobby);
 			setCollege(data[0].college);

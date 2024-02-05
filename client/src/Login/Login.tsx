@@ -46,7 +46,7 @@ export const Login = ({ onLoggedIn }: ILogin) => {
     		params: [myEoa, `nonce: ${nonce}`
     	],
   		});
-			return { publicAddress, signature:transactionHash };
+			return { publicAddress:myEoa, signature:transactionHash };
 		} catch (err) {
 			throw new Error(
 				'You need to sign the message to be able to log in.'

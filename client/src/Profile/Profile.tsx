@@ -49,7 +49,7 @@ export const Profile = ({ auth, onLoggedOut }: Props) => {
 			payload: { id },
 		} = jwtDecode<JwtDecoded>(accessToken);
 
-		fetch(`http://65.1.248.56:443/api/users/${id}`, {
+		fetch(`http://35.154.134.4:443/api/users/${id}`, {
 			headers: {
 				Authorization: `Bearer ${accessToken}`,
 			},
@@ -80,7 +80,7 @@ export const Profile = ({ auth, onLoggedOut }: Props) => {
 
 
   		try {
-    	const response = await fetch('http://65.1.248.56:443/api/data', {
+    	const response = await fetch('http://35.154.134.4:443/api/data', {
       	method: 'POST',
       	body: JSON.stringify(data),
       	headers: { Authorization: `Bearer ${accessToken}`,'Content-Type': 'application/json' },
@@ -104,7 +104,7 @@ export const Profile = ({ auth, onLoggedOut }: Props) => {
 
 
   		try {
-    	const response = await fetch(`http://65.1.248.56:443/api/data/${state.id}`, {
+    	const response = await fetch(`http://35.154.134.4:443/api/data/${state.id}`, {
       	method: 'PATCH',
       	body: JSON.stringify(data),
       	headers: { Authorization: `Bearer ${accessToken}`,'Content-Type': 'application/json' },
@@ -125,7 +125,7 @@ export const Profile = ({ auth, onLoggedOut }: Props) => {
 		event.preventDefault();
 		try {
 			const id = state.id;
-			const response = await fetch(`http://65.1.248.56:443/api/data/${id}`, {
+			const response = await fetch(`http://35.154.134.4:443/api/data/${id}`, {
 			  method: 'GET',
 			  headers: { Authorization: `Bearer ${accessToken}`,'Content-Type': 'application/json' },
 			});

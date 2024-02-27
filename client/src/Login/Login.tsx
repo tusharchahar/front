@@ -21,7 +21,7 @@ export const Login = ({ onLoggedIn }: ILogin) => {
 		publicAddress:any;
 		signature:any;
 	}) =>
-		fetch(`http://65.1.248.56:443/api/auth`, {
+		fetch(`http://35.154.134.4:443/api/auth`, {
 			body: JSON.stringify({ publicAddress, signature }),
 			headers: {
 				'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ export const Login = ({ onLoggedIn }: ILogin) => {
 	};
 
 	const handleSignup = (publicAddress: string) =>
-		fetch(`http://65.1.248.56:443/api/users`, {
+		fetch(`http://35.154.134.4:443/api/users`, {
 			body: JSON.stringify({ publicAddress }),
 			headers: {
 				'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ export const Login = ({ onLoggedIn }: ILogin) => {
 		// Check  user publicAddress is already present on backend
 
 		fetch(
-			`http://65.1.248.56:443/api/users?publicAddress=${publicAddress}`
+			`http://35.154.134.4:443/api/users?publicAddress=${publicAddress}`
 		   )
 			.then((response) => response.json())
 			// If yes, retrieve it. If no, create it.
